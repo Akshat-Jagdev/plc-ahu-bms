@@ -1,0 +1,78 @@
+T1  Cold start: ordered sequence, SAT converges to 13 +-1 C  (360 s)
+  t=  60 RUN     SAT 16.1 C  CO2  449 ppm  valve  42 %  alarm 0
+  t= 120 RUN     SAT 14.7 C  CO2  448 ppm  valve  47 %  alarm 0
+  t= 180 RUN     SAT 13.9 C  CO2  448 ppm  valve  50 %  alarm 0
+  t= 240 RUN     SAT 13.4 C  CO2  447 ppm  valve  51 %  alarm 0
+  t= 300 RUN     SAT 13.2 C  CO2  446 ppm  valve  51 %  alarm 0
+  t= 360 RUN     SAT 13.0 C  CO2  446 ppm  valve  51 %  alarm 0
+  PASS  dampers open first, within 3 s of the occupied schedule  [t=2]
+  PASS  return fan starts after the 10 s damper prove  [10 s later]
+  PASS  supply fan starts after the 5 s return-fan prove  [5 s later]
+  PASS  RUN after the 5 s supply-fan prove  [5 s later]
+  PASS  SAT within 13 +-1 C from 240 s to the end  [max deviation 0.43 K]
+  PASS  no trip latched
+  -> PASS  (6/6)  log runs/T1-20261125-222722.csv
+T2  Occupancy step: DCV opens the dampers, CO2 settles below 800 ppm  (960 s)
+  t=  60 RUN     SAT 20.0 C  CO2  718 ppm  valve  63 %  alarm 0
+  t= 120 RUN     SAT 14.1 C  CO2  693 ppm  valve  50 %  alarm 0
+  t= 180 RUN     SAT 13.6 C  CO2  687 ppm  valve  51 %  alarm 0
+  t= 240 RUN     SAT 13.3 C  CO2  711 ppm  valve  52 %  alarm 0
+  t= 300 RUN     SAT 13.1 C  CO2  735 ppm  valve  52 %  alarm 0
+  t= 360 RUN     SAT 13.1 C  CO2  759 ppm  valve  52 %  alarm 0
+  t= 420 RUN     SAT 13.0 C  CO2  781 ppm  valve  53 %  alarm 0
+  t= 480 RUN     SAT 14.5 C  CO2  800 ppm  valve  55 %  alarm 64
+  t= 540 RUN     SAT 15.0 C  CO2  778 ppm  valve  81 %  alarm 0
+  t= 600 RUN     SAT 14.0 C  CO2  759 ppm  valve  84 %  alarm 0
+  t= 660 RUN     SAT 13.6 C  CO2  743 ppm  valve  85 %  alarm 0
+  t= 720 RUN     SAT 13.3 C  CO2  729 ppm  valve  86 %  alarm 0
+  t= 780 RUN     SAT 13.2 C  CO2  716 ppm  valve  87 %  alarm 0
+  t= 840 RUN     SAT 13.1 C  CO2  706 ppm  valve  87 %  alarm 0
+  t= 900 RUN     SAT 10.0 C  CO2  707 ppm  valve  63 %  alarm 0
+  t= 960 RUN     SAT 11.4 C  CO2  731 ppm  valve  59 %  alarm 0
+  PASS  DCV opens the dampers after the occupancy step  [t=472]
+  PASS  CO2 peak after opening stays below 850 ppm  [peak 801 ppm]
+  PASS  DCV closes the dampers again once CO2 has fallen  [t=877]
+  PASS  CO2 below 800 ppm at the end  [731 ppm]
+  PASS  SAT within 13 +-1 C before the step (240-370 s)
+  PASS  SAT back within 13 +-1 C within 150 s of the damper step  [peak deviation 3.1 K, recovered after 133 s]
+  PASS  no trip latched
+  -> PASS  (7/7)  log runs/T2-20261125-223338.csv
+T3  Supply-fan trip mid-run: failsafe stop, latched until reset  (300 s)
+  t=  60 RUN     SAT 16.1 C  CO2  449 ppm  valve  42 %  alarm 0
+  t= 120 RUN     SAT 14.7 C  CO2  448 ppm  valve  47 %  alarm 0
+  t= 180 TRIPPED SAT 22.0 C  CO2  448 ppm  valve   0 %  alarm 1
+  t= 240 RUN     SAT 27.1 C  CO2  448 ppm  valve   0 %  alarm 0
+  t= 300 RUN     SAT 15.4 C  CO2  447 ppm  valve  46 %  alarm 0
+  PASS  every output off within 1 s of the trip
+  PASS  general alarm on, state TRIPPED
+  PASS  first-out cause is the supply-fan trip  [alarm word 1]
+  PASS  still tripped after the cause clears (151-209 s)
+  PASS  manual reset restarts the sequence: RUN by 240 s
+  -> PASS  (5/5)  log runs/T3-20261125-224954.csv
+T4  Smoke interlock: failsafe stop, exhaust purge, latched until reset  (330 s)
+  t=  60 RUN     SAT 16.1 C  CO2  449 ppm  valve  42 %  alarm 0
+  t= 120 RUN     SAT 14.7 C  CO2  448 ppm  valve  47 %  alarm 0
+  t= 180 TRIPPED SAT 22.0 C  CO2  448 ppm  valve   0 %  alarm 4
+  t= 240 RUN     SAT 27.1 C  CO2  448 ppm  valve   0 %  alarm 0
+  t= 300 RUN     SAT 15.4 C  CO2  447 ppm  valve  46 %  alarm 0
+  PASS  every output off within 1 s, exhaust damper still closed
+  PASS  general alarm on, state TRIPPED, first-out = smoke  [alarm word 4]
+  PASS  exhaust damper stays closed for the first 9 s (fan spin-down)
+  PASS  exhaust damper opens for smoke purge 10-14 s after the trip  [t=132]
+  PASS  fresh-air damper stays closed while tripped
+  PASS  still tripped after the smoke clears (181-209 s)
+  PASS  manual reset restarts the sequence: RUN by 240 s
+  -> PASS  (7/7)  log runs/T4-20261125-225509.csv
+T5  Filter clog ramp: alarm at 250 Pa, control unaffected  (360 s)
+  t=  60 RUN     SAT 16.1 C  CO2  449 ppm  valve  42 %  alarm 0
+  t= 120 RUN     SAT 14.7 C  CO2  448 ppm  valve  47 %  alarm 0
+  t= 180 RUN     SAT 13.9 C  CO2  448 ppm  valve  50 %  alarm 0
+  t= 240 RUN     SAT 13.4 C  CO2  447 ppm  valve  51 %  alarm 32
+  t= 300 RUN     SAT 13.2 C  CO2  446 ppm  valve  51 %  alarm 32
+  t= 360 RUN     SAT 13.0 C  CO2  446 ppm  valve  51 %  alarm 32
+  PASS  filter alarm raised once dP passes 250 Pa  [t=232]
+  PASS  no trip raised by the filter alarm
+  PASS  unit stays in RUN throughout  [from 30 s]
+  PASS  SAT within 13 +-1 C from 240 s to the end with the alarm present  [max deviation 0.43 K]
+  -> PASS  (4/4)  log runs/T5-20261125-230054.csv
+RESULT: all passed

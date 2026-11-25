@@ -1,0 +1,30 @@
+{
+  "test": "T5",
+  "title": "Filter clog ramp: alarm at 250 Pa, control unaffected",
+  "started": "20261125-230054",
+  "duration_s": 360,
+  "passed": true,
+  "checks": [
+    {
+      "name": "filter alarm raised once dP passes 250 Pa",
+      "ok": true,
+      "detail": "t=232"
+    },
+    {
+      "name": "no trip raised by the filter alarm",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "unit stays in RUN throughout",
+      "ok": true,
+      "detail": "from 30 s"
+    },
+    {
+      "name": "SAT within 13 +-1 C from 240 s to the end with the alarm present",
+      "ok": true,
+      "detail": "max deviation 0.43 K"
+    }
+  ],
+  "csv": "T5-20261125-230054.csv"
+}

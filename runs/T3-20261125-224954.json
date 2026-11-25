@@ -1,0 +1,35 @@
+{
+  "test": "T3",
+  "title": "Supply-fan trip mid-run: failsafe stop, latched until reset",
+  "started": "20261125-224954",
+  "duration_s": 300,
+  "passed": true,
+  "checks": [
+    {
+      "name": "every output off within 1 s of the trip",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "general alarm on, state TRIPPED",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "first-out cause is the supply-fan trip",
+      "ok": true,
+      "detail": "alarm word 1"
+    },
+    {
+      "name": "still tripped after the cause clears (151-209 s)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "manual reset restarts the sequence: RUN by 240 s",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "csv": "T3-20261125-224954.csv"
+}

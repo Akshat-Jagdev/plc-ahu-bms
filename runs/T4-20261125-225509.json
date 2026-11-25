@@ -1,0 +1,45 @@
+{
+  "test": "T4",
+  "title": "Smoke interlock: failsafe stop, exhaust purge, latched until reset",
+  "started": "20261125-225509",
+  "duration_s": 330,
+  "passed": true,
+  "checks": [
+    {
+      "name": "every output off within 1 s, exhaust damper still closed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "general alarm on, state TRIPPED, first-out = smoke",
+      "ok": true,
+      "detail": "alarm word 4"
+    },
+    {
+      "name": "exhaust damper stays closed for the first 9 s (fan spin-down)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "exhaust damper opens for smoke purge 10-14 s after the trip",
+      "ok": true,
+      "detail": "t=132"
+    },
+    {
+      "name": "fresh-air damper stays closed while tripped",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "still tripped after the smoke clears (181-209 s)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "manual reset restarts the sequence: RUN by 240 s",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "csv": "T4-20261125-225509.csv"
+}

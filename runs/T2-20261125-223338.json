@@ -1,0 +1,45 @@
+{
+  "test": "T2",
+  "title": "Occupancy step: DCV opens the dampers, CO2 settles below 800 ppm",
+  "started": "20261125-223338",
+  "duration_s": 960,
+  "passed": true,
+  "checks": [
+    {
+      "name": "DCV opens the dampers after the occupancy step",
+      "ok": true,
+      "detail": "t=472"
+    },
+    {
+      "name": "CO2 peak after opening stays below 850 ppm",
+      "ok": true,
+      "detail": "peak 801 ppm"
+    },
+    {
+      "name": "DCV closes the dampers again once CO2 has fallen",
+      "ok": true,
+      "detail": "t=877"
+    },
+    {
+      "name": "CO2 below 800 ppm at the end",
+      "ok": true,
+      "detail": "731 ppm"
+    },
+    {
+      "name": "SAT within 13 +-1 C before the step (240-370 s)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "SAT back within 13 +-1 C within 150 s of the damper step",
+      "ok": true,
+      "detail": "peak deviation 3.1 K, recovered after 133 s"
+    },
+    {
+      "name": "no trip latched",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "csv": "T2-20261125-223338.csv"
+}

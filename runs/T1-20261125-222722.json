@@ -1,0 +1,40 @@
+{
+  "test": "T1",
+  "title": "Cold start: ordered sequence, SAT converges to 13 +-1 C",
+  "started": "20261125-222722",
+  "duration_s": 360,
+  "passed": true,
+  "checks": [
+    {
+      "name": "dampers open first, within 3 s of the occupied schedule",
+      "ok": true,
+      "detail": "t=2"
+    },
+    {
+      "name": "return fan starts after the 10 s damper prove",
+      "ok": true,
+      "detail": "10 s later"
+    },
+    {
+      "name": "supply fan starts after the 5 s return-fan prove",
+      "ok": true,
+      "detail": "5 s later"
+    },
+    {
+      "name": "RUN after the 5 s supply-fan prove",
+      "ok": true,
+      "detail": "5 s later"
+    },
+    {
+      "name": "SAT within 13 +-1 C from 240 s to the end",
+      "ok": true,
+      "detail": "max deviation 0.43 K"
+    },
+    {
+      "name": "no trip latched",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "csv": "T1-20261125-222722.csv"
+}
